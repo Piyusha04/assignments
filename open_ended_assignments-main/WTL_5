@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>String Length & Reverse Digits</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 40px;
+ }
+ input, button {
+ margin-top: 10px;
+ padding: 8px;
+ font-size: 16px;
+ }
+ .output {
+ margin-top: 10px;
+ font-weight: bold;
+ }
+ </style>
+</head>
+<body>
+ <h2>1. Get Length of a String</h2>
+ <input type="text" id="inputString" placeholder="Enter a string">
+ <button onclick="showStringLength()">Get Length</button>
+ <div id="stringLengthOutput" class="output"></div>
+ <hr>
+ <h2>2. Reverse Digits of a Number</h2>
+ <input type="number" id="inputNumber" placeholder="Enter a number">
+ <button onclick="showReversedNumber()">Reverse Digits</button>
+ <div id="reversedNumberOutput" class="output"></div>
+ <script>
+ function getStringLength(str) {
+ return str.length;
+ }
+ function reverseDigits(num) {
+ return parseInt(num.toString().split('').reverse().join('')) *
+Math.sign(num);
+ }
+ 
+ function showStringLength() {
+ const input = document.getElementById('inputString').value;
+ const length = getStringLength(input);
+ document.getElementById('stringLengthOutput').textContent = `Length: 
+${length}`;
+ }
+ function showReversedNumber() {
+ const input = parseInt(document.getElementById('inputNumber').value);
+ const reversed = reverseDigits(input);
+ document.getElementById('reversedNumberOutput').textContent = `Reversed: 
+${reversed}`;
+ }
+ </script>
+</body>
+</html>
