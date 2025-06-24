@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Find Prime Numbers in a Range</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 40px;
+ }
+ input, button {
+ margin: 5px 0;
+ padding: 8px;
+ font-size: 16px;
+ }
+ .output {
+ margin-top: 10px;
+ font-weight: bold;
+ }
+ </style>
+</head>
+<body>
+ <h2>Find Prime Numbers Between Two Numbers</h2>
+ <label for="startNumber">Start Number:</label><br>
+ <input type="number" id="startNumber" placeholder="Enter starting number"><br>
+ <label for="endNumber">End Number:</label><br>
+ <input type="number" id="endNumber" placeholder="Enter ending number"><br>
+ <button onclick="findPrimes()">Find Primes</button>
+ <div id="primeOutput" class="output"></div>
+
+<script>
+ function isPrime(num) {
+ if (num < 2) return false;
+ for (let i = 2; i <= Math.sqrt(num); i++) {
+ if (num % i === 0) return false;
+ }
+ return true;
+ }
+
+ function findPrimes() {
+ const start = parseInt(document.getElementById('startNumber').value);
+ const end = parseInt(document.getElementById('endNumber').value);
+ const outputDiv = document.getElementById('primeOutput');
+ if (isNaN(start) || isNaN(end)) {
+ outputDiv.textContent = "Please enter valid numbers for both fields.";
+ return;
+ }
+ if (start > end) {
+ outputDiv.textContent = "Start number should be less than or equal to end 
+ number.";
+ return;
+ }
+ const primes = [];
+ for (let i = start; i <= end; i++) {
+ if (isPrime(i)) primes.push(i);
+ }
+ outputDiv.textContent = primes.length > 0
+ ? `Prime numbers between ${start} and ${end}: ${primes.join(', ')}`
+ : `No prime numbers found between ${start} and ${end}.`;
+ }
+ </script>
+</body>
+</html>
